@@ -57,7 +57,19 @@ public class RecipesController : ControllerBase
     [HttpPut("{name}")]
     public IActionResult Update(string name, [FromBody]Recipe recipe)
     {
-        throw new NotImplementedException();
+        var isValidName = _service.RecipeExists(name);
+        
+        if (!isValidName)
+        {
+            return BadRequest("Recipe not found");
+        }
+        var isRecipe = _service.RecipeExists(recipe.Name);
+        if (!isRecipe)
+        {
+            return BadRequest("Recipe not found");
+        }
+        _service.UpdateRecipe(recipe);
+        return NoContent();
     }
 
     // 5 - Sua aplicação deve ter o endpoint DEL /recipe
