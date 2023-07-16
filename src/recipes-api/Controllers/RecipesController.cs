@@ -20,8 +20,6 @@ public class RecipesController : ControllerBase
         this._service = service;        
     }
 
-    // 1 - Sua aplicação deve ter o endpoint GET /recipe
-    //Read
     [HttpGet]
     public IActionResult Get()
     {
@@ -29,8 +27,6 @@ public class RecipesController : ControllerBase
         return Ok(recipes);
     }
 
-    // 2 - Sua aplicação deve ter o endpoint GET /recipe/:name
-    //Read
     [HttpGet("{name}", Name = "GetRecipe")]
     public IActionResult Get(string name)
     {                
@@ -38,7 +34,6 @@ public class RecipesController : ControllerBase
         return Ok(recipe);
     }
 
-    // 3 - Sua aplicação deve ter o endpoint POST /recipe
     [HttpPost]
     public IActionResult Create([FromBody]Recipe recipe)
     {
@@ -53,7 +48,6 @@ public class RecipesController : ControllerBase
             }, recipe);
     }
 
-    // 4 - Sua aplicação deve ter o endpoint PUT /recipe
     [HttpPut("{name}")]
     public IActionResult Update(string name, [FromBody]Recipe recipe)
     {
@@ -72,7 +66,6 @@ public class RecipesController : ControllerBase
         return NoContent();
     }
 
-    // 5 - Sua aplicação deve ter o endpoint DEL /recipe
     [HttpDelete("{name}")]
     public IActionResult Delete(string name)
     {

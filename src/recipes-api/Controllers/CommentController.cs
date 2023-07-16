@@ -20,7 +20,6 @@ public class CommentController : ControllerBase
         this._service = service;        
     }
 
-    // 10 - Sua aplicação deve ter o endpoint POST /comment
     [HttpPost]
     public IActionResult Create([FromBody]Comment comment)
     {
@@ -28,7 +27,6 @@ public class CommentController : ControllerBase
         return CreatedAtRoute("GetComment", new { name = comment.RecipeName }, comment);
     }
 
-    // 11 - Sua aplicação deve ter o endpoint GET /comment/:recipeName
     [HttpGet("{name}", Name = "GetComment")]
     public IActionResult Get(string name)
     {                
