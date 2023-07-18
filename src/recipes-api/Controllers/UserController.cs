@@ -38,7 +38,6 @@ public class UserController : ControllerBase
         return CreatedAtRoute("GetUser", new { email = user.Email }, user);
     }
 
-    // "8 - Sua aplicação deve ter o endpoint PUT /user
     [HttpPut("{email}")]
     public IActionResult Update(string email, [FromBody]User user)
     {
